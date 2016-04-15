@@ -1,0 +1,38 @@
+.info {
+	color: green;
+}
+
+.alert {
+	color: orange;
+}
+
+.error {
+	color: red;
+}
+
+.fatal {
+	color:red;
+	font-weight: bold;
+}
+
+.DataTableHeader {
+	background-color: cornflowerblue;
+}
+
+.DataTableRow {
+	background-color: mediumturquoise;
+}
+
+.BodyClass {
+	font-family: Verdana;
+}
+
+.Button {
+	border-width: 2px;
+	border-radius: 5px;
+	font-size: 15px;
+}
+
+.InputText {
+	font-size: 15px;
+}

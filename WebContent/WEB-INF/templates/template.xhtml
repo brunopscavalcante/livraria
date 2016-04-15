@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+<h:head>
+	<title>Livraria</title>
+</h:head>
+<h:body styleClass="BodyClass">
+	
+	<h:messages errorClass="error" fatalClass="fatal" infoClass="info"
+		warnClass="alert" />
+
+	<f:loadBundle basename="resources.messages" var="msgs" />
+	<h:outputStylesheet library="css" name="styles.css" />
+	<h:outputScript library="js" target="head" name="javascripts.js" />
+	
+	<h:form>
+	<h:panelGrid width="300px" border="1" style="text-align: center">
+		<rich:toolbar itemSeparator="disc">
+			<h:link value="Home" outcome="index" />
+			<h:commandLink action="#{clienteBean.prepararConsulta}" value="Cliente" />
+<!-- 			<h:commandLink action="#{editoraBean.prepararConsulta}" value="Editora" /> -->
+			<h:link value="Editora" />
+		</rich:toolbar>
+	</h:panelGrid>
+	<br></br>
+	</h:form>
+	<ui:insert name="content">Sem corpo</ui:insert>
+	
+	<hr />
+	
+	<ui:insert name="rodape"></ui:insert>
+</h:body>
+</html>

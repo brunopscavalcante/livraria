@@ -1,0 +1,98 @@
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+	<ui:define name="content">
+		<h:form id="clienteForm">
+			<h:panelGrid width="300px"
+				style="background-color:Beige;padding:5;border-width:0.2;border-style:solid;">
+
+				<!-- Painel de Pesquisa -->
+				<!-- Campos -->
+				<h:panelGrid columns="2" width="220px">
+					<h:outputLabel value="#{msgs.lbl_nome}: " for="campo-nome" />
+					<h:inputText id="campo-nome" value="#{clienteBean.model.nome}"
+						lang="pt" styleClass="InputText">
+					</h:inputText>
+				</h:panelGrid>
+
+				<!-- Botões -->
+				<h:panelGrid columns="3" width="220px">
+					<h:commandButton action="#{clienteBean.limpar}"
+						value="#{msgs.btn_limpar}" styleClass="Button" />
+					<h:commandButton action="#{clienteBean.consultar}"
+						value="#{msgs.btn_consultar}" styleClass="Button" />
+					<h:commandButton action="#{clienteBean.prepararInclusao}"
+						value="#{msgs.btn_incluir}" styleClass="Button" />
+				</h:panelGrid>
+
+				<!-- Painel de Resultado da Pesquisa -->
+				<h:panelGrid rendered="#{not empty clienteBean.listaClientes}">
+
+					<!-- Resultados -->
+					<h:panelGrid id="dataTable">
+						<h:dataTable value="#{clienteBean.listaClientes}" var="cliente"
+							border="0" width="700px" cellpadding="6"
+							headerClass="DataTableHeader" rowClasses="DataTableRow">
+							<!-- Radio -->
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="" />
+								</f:facet>
+								<h:selectOneRadio valueChangeListener="#{clienteBean.selecionar}">
+									<f:selectItem itemLabel="" itemValue="false" />
+									<f:ajax event="click" execute="@this"/>
+								</h:selectOneRadio>
+							</h:column>
+							<!-- Nome -->
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="#{msgs.lbl_nome}" />
+								</f:facet>
+								<h:outputText value="#{cliente.nome}" />
+							</h:column>
+
+							<!-- E-mail -->
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="#{msgs.lbl_email}" />
+								</f:facet>
+								<h:outputText value="#{cliente.email}" />
+							</h:column>
+
+							<!-- Endereço -->
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="#{msgs.lbl_endereco}" />
+								</f:facet>
+								<h:outputText value="#{cliente.endereco}" />
+							</h:column>
+
+							<!-- Data Nascimento -->
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="#{msgs.lbl_data_nasc}" />
+								</f:facet>
+								<h:outputText value="#{cliente.dataNascimento}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</h:outputText>
+							</h:column>
+						</h:dataTable>
+					</h:panelGrid>
+					<!-- Botões -->
+					<h:panelGrid columns="2">
+						<h:commandButton action="#{clienteBean.alterar}"
+							value="#{msgs.btn_alterar}" styleClass="Button" />
+						<h:commandButton action="#{clienteBean.excluir}"
+							value="#{msgs.btn_excluir}" styleClass="Button" />
+					</h:panelGrid>
+
+				</h:panelGrid>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,38 @@
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+	 xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<ui:define name="content">
+	<h:form>
+			<h:panelGrid width="300"
+				style="background-color:Beige;padding:5;border-width:0.2;border-style:solid;">
+				<h:panelGrid columns="2" width="220px">
+					<h:outputLabel value="#{msgs.lbl_nome}: " for="campo-nome" />
+					<h:inputText id="campo-nome" value="#{clienteBean.model.nome}"
+						lang="pt" styleClass="InputText"  />
+
+					<h:outputLabel value="#{msgs.lbl_email}:" for="campo-email" />
+					<h:inputText id="campo-email" value="#{clienteBean.model.email}" styleClass="InputText" />
+
+					<h:outputLabel value="#{msgs.lbl_endereco}: " for="campo-endereco" />
+					<h:inputText id="campo-endereco" styleClass="InputText" 
+						value="#{clienteBean.model.endereco}" lang="pt" />
+
+					<h:outputLabel value="#{msgs.lbl_data_nasc}: "
+						for="campo-data-nasc" />
+					<rich:calendar value="#{clienteBean.model.dataNascimento}"
+						id="campo-data-nasc" datePattern="dd/MM/yyyy" />
+
+					<h:panelGrid columns="2" width="100px">
+						<h:commandButton action="#{clienteBean.limpar}" value="Limpar" styleClass="Button" />
+						<h:commandButton action="#{clienteBean.inserir}" value="Salvar" styleClass="Button" />
+					</h:panelGrid>
+				</h:panelGrid>
+			</h:panelGrid>
+		</h:form>
+</ui:define>
+</ui:composition>
