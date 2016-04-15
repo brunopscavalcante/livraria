@@ -21,7 +21,7 @@ import utils.message.MessageUtils;
 public class ClienteBean extends BaseBean implements Serializable {
 
 	
-	/**
+	/** Teste
 	 * 
 	 */
 	private static final long serialVersionUID = 6533572478688203204L;
